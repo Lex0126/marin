@@ -37,12 +37,6 @@ class _ReleaseClientState extends State<Release_Client> {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Navigator.pop(context); 
-          },
-        ),
         const Text(
           'Registro de Clientes',
           style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),

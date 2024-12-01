@@ -36,12 +36,6 @@ class _ReleaseProviderState extends State<Release_Provider> {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Navigator.pop(context); 
-          },
-        ),
         const Text(
           'Registro Proveedor',
           style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),

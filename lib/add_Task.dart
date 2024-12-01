@@ -122,7 +122,7 @@ class _AsignarTareasScreenState extends State<AsignarTareasScreen> {
                   // Botones de Estatus
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: ['Activo', 'Pausado', 'Cancelado']
+                    children: ['Completadas', 'Cancelado']
                         .map(
                           (estatus) => ChoiceChip(
                             shape: RoundedRectangleBorder(
@@ -189,12 +189,6 @@ class _AsignarTareasScreenState extends State<AsignarTareasScreen> {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Navigator.pop(context); 
-          },
-        ),
         const Text(
           'Asignar Tareas',
           style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),

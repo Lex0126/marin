@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 
-class DisableClient extends StatefulWidget {
-const DisableClient({super.key});
+class SeeC extends StatefulWidget {
+  const SeeC({super.key});
 
   @override
-  State<DisableClient> createState() => _DisableClientState();
+  State<SeeC> createState() => _SeeSupplierState();
 }
 
-class _DisableClientState extends State<DisableClient> {
-  @override
-  final TextEditingController _searchController = TextEditingController();
+class _SeeSupplierState extends State<SeeC> {
+   final TextEditingController _searchController = TextEditingController();
   String _searchText = '';
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return Scaffold(
       backgroundColor: const Color(0xFF8470A1),
       body: SafeArea(
         child: Column(
@@ -26,6 +24,8 @@ class _DisableClientState extends State<DisableClient> {
         ),
       ),
     );
+
+    
   }
   Widget buildTitle(BuildContext context) {
   return Padding(
@@ -34,7 +34,7 @@ class _DisableClientState extends State<DisableClient> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const Text(
-          'Cliente inhabilitado',
+          'Clientes',
           style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
         ),
         const SizedBox(width: 48),
@@ -105,6 +105,4 @@ class _DisableClientState extends State<DisableClient> {
       ),
     );
   }
- 
-
 }

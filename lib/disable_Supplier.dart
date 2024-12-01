@@ -31,12 +31,6 @@ class _DisableSupplierState extends State<DisableSupplier> {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Navigator.pop(context); 
-          },
-        ),
         const Text(
           'Proveedor inhabilitado',
           style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),

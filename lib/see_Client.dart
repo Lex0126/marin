@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-import 'package:marin/see_PJ.dart';
 import 'package:marin/see_Supplier.dart';
 import 'package:marin/release_Client.dart';
 import 'package:marin/release_Supplier.dart';
@@ -13,17 +10,15 @@ import 'package:marin/see_Projects.dart';
 import 'package:marin/add_Task.dart';
 import 'package:marin/see_Client.dart';
 import 'package:marin/see_C.dart';
-import 'package:marin/see_P.dart';
-import 'package:marin/see_PJ.dart';
 
-class SeeProjects extends StatefulWidget {
-  const SeeProjects({super.key});
+class SeeClient extends StatefulWidget {
+  const SeeClient({super.key});
 
   @override
-  State<SeeProjects> createState() => _SeeProjectsState();
+  State<SeeClient> createState() => _SeeClientState();
 }
 
-class _SeeProjectsState extends State<SeeProjects>  with SingleTickerProviderStateMixin{
+class _SeeClientState extends State<SeeClient> with SingleTickerProviderStateMixin {
   final TextEditingController _searchController = TextEditingController();
   String _searchText = '';
   
@@ -72,7 +67,7 @@ class _SeeProjectsState extends State<SeeProjects>  with SingleTickerProviderSta
         ),
           
           const Text(
-            'Proyectos',
+            'Clientes',
             style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(width: 48),
@@ -90,9 +85,9 @@ class _SeeProjectsState extends State<SeeProjects>  with SingleTickerProviderSta
       labelColor: Colors.white,
       unselectedLabelColor: Colors.white54,
       tabs: const [
-        Tab(text: "Proyectos"),
-        Tab(text: 'Crear Proyectos'),
-        Tab(text: 'Agregar Tareas'),
+        Tab(text: "Clientes"),
+        Tab(text: 'Crear Clientes'),
+        Tab(text: 'Clientes Inhabilitados'),
       ],
     );
   }
@@ -101,9 +96,9 @@ class _SeeProjectsState extends State<SeeProjects>  with SingleTickerProviderSta
     return TabBarView(
       controller: _tabController,
       children: [
-        SeePJ(),
-        Release_project(),
-        AsignarTareasScreen(),
+        SeeC(),
+        Release_Client(),
+        DisableClient(),
       ],
     );
   }
@@ -129,3 +124,5 @@ class _SeeProjectsState extends State<SeeProjects>  with SingleTickerProviderSta
     );
   }
 }
+
+

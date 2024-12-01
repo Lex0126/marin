@@ -1,4 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:marin/see_Supplier.dart';
+import 'package:marin/release_Client.dart';
+import 'package:marin/release_Supplier.dart';
+import 'package:marin/disable_Client.dart';
+import 'package:marin/disable_Supplier.dart';
+import 'package:marin/release_Project.dart';
+import 'package:marin/see_Projects.dart';
+import 'package:marin/add_Task.dart';
+import 'package:marin/see_Client.dart';
+import 'package:marin/see_C.dart';
+import 'package:marin/see_P.dart';
 
 class SeeSupplier extends StatefulWidget {
   const SeeSupplier({super.key});
@@ -7,90 +20,91 @@ class SeeSupplier extends StatefulWidget {
   State<SeeSupplier> createState() => _SeeSupplierState();
 }
 
-class _SeeSupplierState extends State<SeeSupplier> {
+class _SeeSupplierState extends State<SeeSupplier> with SingleTickerProviderStateMixin{
    final TextEditingController _searchController = TextEditingController();
   String _searchText = '';
+  
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this); // Cambia el número de pestañas según lo que necesites
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       backgroundColor: const Color(0xFF8470A1),
       body: SafeArea(
         child: Column(
           children: [
             buildTitle(context),
-            buildSearchContainer(),
-            buildContentContainer(),
+            buildTabMenu(),
+            Expanded(child: buildTabContent()),
+           
           ],
         ),
       ),
     );
-
-    
   }
+
   Widget buildTitle(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.all(16.0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        IconButton(
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+           IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.pop(context); 
           },
         ),
-        const Text(
-          'Proveedores',
-          style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(width: 48),
-      ],
-    ),
-  );
-}
-
-  Widget buildSearchContainer() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Container(
-        height: 50,
-        decoration: BoxDecoration(
-          color: const Color(0xFF463D5E),
-          borderRadius: BorderRadius.circular(30),
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: TextField(
-                  controller: _searchController,
-                  style: const TextStyle(color: Colors.white),
-                  cursorColor: Colors.white,
-                  decoration: const InputDecoration(
-                    hintText: 'Buscar...',
-                    hintStyle: TextStyle(color: Colors.white54),
-                    border: InputBorder.none,
-                  ),
-                  onChanged: (text) {
-                    setState(() {
-                      _searchText = text;
-                    });
-                  },
-                ),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 16.0),
-              child: Icon(Icons.search, color: Colors.white54),
-            ),
-          ],
-        ),
+          
+          const Text(
+            'Proveedores',
+            style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(width: 48),
+        ],
       ),
     );
   }
 
-  Widget buildContentContainer() {
+
+   Widget buildTabMenu() {
+    return TabBar(
+      controller: _tabController,
+      isScrollable: true,
+      indicatorColor: Colors.white,
+      labelColor: Colors.white,
+      unselectedLabelColor: Colors.white54,
+      tabs: const [
+        Tab(text: "Proveedores"),
+        Tab(text: 'Crear Proveedor'),
+        Tab(text: 'Proveedores Inhabilitados'),
+      ],
+    );
+  }
+
+  Widget buildTabContent() {
+    return TabBarView(
+      controller: _tabController,
+      children: [
+        SeeP(),
+        Release_Provider(),
+        DisableSupplier(),
+      ],
+    );
+  }
+    Widget buildContentContainer() {
     return Expanded(
       child: Container(
         margin: const EdgeInsets.all(16.0),
